@@ -145,7 +145,7 @@ runs:
         build_options=""
         if ${{ inputs.build-obfuscate == 'true' }}; then
           build_options+=' -obfuscated'
-          build_options+=" -garbleargs '${{ inputs.garble-args }}'"
+          build_options+=' -garbleargs "${{ inputs.garble-args }}"'
         fi
         if [[ "${{ inputs.build-tags }}" != "false" ]]; then
           tags_string="${{ inputs.build-tags }}"
