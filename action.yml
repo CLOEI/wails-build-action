@@ -39,6 +39,10 @@ inputs:
     description: "Obfuscate the build"
     required: false
     default: "false"
+  garble-args:
+    description: "Garble arguments"
+    required: false
+    default: "-literals -tiny -seed=random"
   wails-version:
     description: "Wails version to use"
     required: false
@@ -141,6 +145,7 @@ runs:
         build_options=""
         if ${{ inputs.build-obfuscate == 'true' }}; then
           build_options+=' -obfuscated'
+          build_options+=" -garbleargs '${{ inputs.garble-args }}'"
         fi
         if [[ "${{ inputs.build-tags }}" != "false" ]]; then
           tags_string="${{ inputs.build-tags }}"
